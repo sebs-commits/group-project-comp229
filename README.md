@@ -37,7 +37,7 @@ git pull origin main
 ```
 
 ```bash
-git switch new-branch-name
+git switch -c new-branch-name
 ```
 
 2. Once you are done with the changes, make sure you are in the correct branch then do the following.
