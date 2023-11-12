@@ -1,3 +1,3 @@
 Instructions after cloning repo
     - npm install express // this installs node_modules
-    - node server.js // this starts the server
+    - npx nodemon server // this starts the server
