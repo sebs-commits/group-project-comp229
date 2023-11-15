@@ -2,3 +2,4 @@
 
 - Sebastian David
 - Spencer Pretli
+- Shanjai Kailanathan
