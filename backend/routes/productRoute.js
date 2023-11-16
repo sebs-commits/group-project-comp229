@@ -4,6 +4,8 @@ const {
   getProduct,
   getProducts,
   createProduct,
+  updateProduct,
+  deleteProduct,
 } = require("../controllers/productController");
 
 // GET all info
@@ -17,13 +19,9 @@ router.post("/", createProduct);
 
 // DELETE and UPDATE need to be created
 // DELETE info
-router.delete("/:id", (req, res) => {
-  res.json({ mssg: "delete info" });
-});
+router.delete("/:id", deleteProduct);
 
 // UPDATE info
-router.patch("/:id", (req, res) => {
-  res.json({ mssg: "update all info" });
-});
+router.patch("/:id", updateProduct);
 
 module.exports = router;
