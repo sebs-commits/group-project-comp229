@@ -41,12 +41,43 @@ const createProduct = async (req, res) => {
   }
 };
 // UPDATE all requests
-
+const updateProduct = async (req, res) => {
+  const { id } = req.params;
+  try {
+    if (mongoose.Types.ObjectId.isValid(id)) {
+      const product = await Product.findOneAndUpdate(
+        { _id: id },
+        {
+          ...req.body,
+        }
+      );
+      res.status(201).json({ message: "Product succesfully changed" });
+    } else {
+      res.status(401).json({ message: "This is not a valid product" });
+    }
+  } catch (error) {
+    res.status(500).json({ error: "Could not update product" });
+  }
+};
 // DELETE specific requests
-
+const deleteProduct = async (req, res) => {
+  const { id } = req.params;
+  try {
+    if (mongoose.Types.ObjectId.isValid(id)) {
+      const product = await Product.findOneAndDelete({ _id: id });
+      res.status(201).json({ message: "Product successfully deleted" });
+    } else {
+      res.status(401).json({ message: "That product id is not valid" });
+    }
+  } catch (error) {
+    res.status(500).json({ error: "Could not delete product" });
+  }
+};
 // must export so that I can import it into route file
 module.exports = {
   getProduct,
   getProducts,
   createProduct,
+  updateProduct,
+  deleteProduct,
 };
