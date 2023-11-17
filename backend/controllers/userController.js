@@ -4,7 +4,7 @@ const jwt = require("jsonwebtoken");
 const bodyParser = require("body-parser");
 const bcrypt = require("bcrypt");
 const { application } = require("express");
-
+const SECRET_KEY = "password";
 // POST user registration
 const createAccount = async (req, res) => {
   try {
@@ -44,7 +44,7 @@ const getLogin = async (req, res) => {
     const token = jwt.sign({ userID: user._id }, SECRET_KEY, {
       expiresIn: "1hr",
     });
-    res.json({ message: "Login successful" });
+    res.json({ message: "Login successful", token });
   } catch (error) {
     console.log(error);
     res.status(500).json({ error: "Unable to login" });
