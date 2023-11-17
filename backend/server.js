@@ -19,8 +19,8 @@ app.use(bodyParser.json());
 app.use(cors());
 
 // routes
-app.use("/api", userRoute);
-app.use("/api/item", productRoute);
+app.use("/user", userRoute);
+app.use("/product", productRoute);
 
 mongoose
   .connect(process.env.MONGO_URI)
