@@ -1,10 +1,7 @@
 require("dotenv").config();
 const User = require("../models/userSchema");
-const mongoose = require("mongoose");
 const jwt = require("jsonwebtoken");
-const bodyParser = require("body-parser");
 const bcrypt = require("bcrypt");
-const { application } = require("express");
 // POST user registration
 const createAccount = async (req, res) => {
   try {

@@ -15,7 +15,7 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use(bodyParser.json());
+app.use(bodyParser.json()); // this might be a bit redundant
 app.use(cors());
 
 // routes
