@@ -1,10 +1,10 @@
+require("dotenv").config();
 const User = require("../models/userSchema");
 const mongoose = require("mongoose");
 const jwt = require("jsonwebtoken");
 const bodyParser = require("body-parser");
 const bcrypt = require("bcrypt");
 const { application } = require("express");
-const SECRET_KEY = "password";
 // POST user registration
 const createAccount = async (req, res) => {
   try {
@@ -41,7 +41,7 @@ const getLogin = async (req, res) => {
     if (!isPasswordValid) {
       return res.status(401).json({ error: "Invalid Password" });
     }
-    const token = jwt.sign({ userID: user._id }, SECRET_KEY, {
+    const token = jwt.sign({ userID: user._id }, process.env.SECRET_KEY, {
       expiresIn: "1hr",
     });
     res.json({ message: "Login successful", token });
